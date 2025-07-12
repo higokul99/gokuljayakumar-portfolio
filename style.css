@@ -532,91 +532,108 @@
             font-size: 0.9rem;
         }
         
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
         
-        .contact-info {
-            margin-bottom: 30px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-size: 1.2rem;
-        }
-        
-        .contact-text h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: var(--primary-color);
-        }
-        
-        .contact-form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: var(--shadow);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn-submit {
-            background-color: var(--secondary-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            width: 100%;
-        }
-        
-        .btn-submit:hover {
-            background-color: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+/* Contact Section Styles */
+#contact {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.contact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.contact-item {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: #007bff;
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+    transform: scale(1.1);
+}
+
+.contact-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.contact-text {
+    flex: 1;
+}
+
+.contact-text h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.contact-text a {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    word-break: break-word;
+}
+
+.contact-text a:hover {
+    color: #007bff;
+}
+
+/* Specific icon colors for better branding */
+.contact-item:nth-child(1) .contact-icon {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+}
+
+.contact-item:nth-child(2) .contact-icon {
+    background: linear-gradient(135deg, #dc3545, #bd2130);
+}
+
+.contact-item:nth-child(3) .contact-icon {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.contact-item:nth-child(4) .contact-icon {
+    background: linear-gradient(135deg, #0077b5, #005885);
+}
+
+.contact-item:nth-child(5) .contact-icon {
+    background: linear-gradient(135deg, #333, #24292e);
+}
         
         /* Footer */
         footer {
@@ -841,3 +858,51 @@
                 padding-right: 15px;
             }
         }
+
+
+        * Responsive Design */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .contact-item {
+        padding: 20px;
+    }
+    
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .contact-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .contact-text h3 {
+        font-size: 16px;
+    }
+    
+    .contact-text a {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    #contact {
+        padding: 60px 0;
+    }
+    
+    .contact-item {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .contact-text a {
+        font-size: 12px;
+    }
+}
