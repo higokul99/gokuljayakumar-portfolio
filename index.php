@@ -1,9 +1,12 @@
+<?php
+require_once 'functions.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gokul Jayakumar - Portfolio</title>
+    <title><?php echo htmlspecialchars(get_setting('site_title')); ?></title>
     <link rel="icon" type="image/png" href="gokul-jayakumar.jpg">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,7 +15,7 @@
     <header id="header">
         <div class="container header-content">
             <div class="logo">
-                <h1>Gokul<span>  Jayakumar</span></h1>
+                <h1><?php echo htmlspecialchars(get_setting('header_logo_part1')); ?><span>  <?php echo htmlspecialchars(get_setting('header_logo_part2')); ?></span></h1>
             </div>
             <div class="menu-toggle">&#9776;</div>
             <nav>
@@ -32,8 +35,8 @@
     <section id="home" class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Hi, I'm <span>Gokul Jayakumar</span></h1>
-                <p>Python Backend Developer with 4.5 years of experience specializing in Flask, Django, RESTful APIs, and database management. Passionate about designing scalable, secure, and high-performance backend solutions.</p>
+                <h1><?php echo htmlspecialchars(get_setting('hero_title_prefix')); ?> <span><?php echo htmlspecialchars(get_setting('hero_title_name')); ?></span></h1>
+                <p><?php echo htmlspecialchars(get_setting('hero_description')); ?></p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Contact Me</a>
                     <a href="#about" class="btn btn-secondary">Learn More</a>
@@ -49,56 +52,41 @@
     <section id="about">
         <div class="container">
             <div class="section-header">
-                <h2>About Me</h2>
-                <p>IT professional with expertise in Python backend development, system administration, and technical leadership.</p>
+                <h2><?php echo htmlspecialchars(get_setting('about_title')); ?></h2>
+                <p><?php echo htmlspecialchars(get_setting('about_subtitle')); ?></p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Python Backend Developer & Technical Leader</h3>
-                    <p>I'm a seasoned IT professional with 4.5 years of experience in Python backend development, system administration, and technical leadership. Currently working as a Python Backend Developer at TCS, I specialize in Flask, Django, RESTful APIs, and database management with PostgreSQL, MySQL, and MongoDB.</p>
-                    <p>During my career break (2022-2024) to pursue an MCA, I remained actively engaged in industry projects, technical leadership, and innovation initiatives as the Chief Technical Officer (CTO) at IEDC SNIT Kollam. I'm passionate about designing scalable, secure, and high-performance backend solutions while mentoring and leading development teams.</p>
-                    <p>Currently learning Docker and Kubernetes to enhance deployment and scalability strategies.</p>
+                    <h3><?php echo htmlspecialchars(get_setting('about_detailed_title')); ?></h3>
+                    <p><?php echo get_setting('about_detailed_text'); // Allow HTML here as per setup ?></p>
                     
                     <ul class="info-list">
                         <li>
                             <strong>Email</strong>
-                            <span>hellogokuljayakumar@gmail.com</span>
+                            <span><?php echo htmlspecialchars(get_setting('contact_email')); ?></span>
                         </li>
                         <li>
                             <strong>Phone</strong>
-                            <span>+91 7678-659-691</span>
+                            <span><?php echo htmlspecialchars(get_setting('contact_phone')); ?></span>
                         </li>
                         <li>
                             <strong>LinkedIn</strong>
-                            <span><a href="http://www.linkedin.com/in/gokul-jayakumar" target="_blank">linkedin.com/in/gokul-jayakumar</a></span>
+                            <span><a href="<?php echo htmlspecialchars(get_setting('contact_linkedin')); ?>" target="_blank">linkedin.com/in/gokul-jayakumar</a></span>
                         </li>
                         <li>
                             <strong>github</strong>
-                            <span><a href="https://github.com/higokul99" target="_blank">github.com/higokul99</a></span>
+                            <span><a href="<?php echo htmlspecialchars(get_setting('contact_github')); ?>" target="_blank">github.com/higokul99</a></span>
                         </li>
                     </ul>
                     
                     <h3>Technical Skills</h3>
                     <div class="skills">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Microsoft Azure</span>
-                        <span class="skill-tag">GitHub Actions</span>
-                        <span class="skill-tag">Postman</span>
-                        <span class="skill-tag">Swagger</span>
-                        <span class="skill-tag">cURL</span>
-                        <span class="skill-tag">Azure Monitor</span>
-                        <span class="skill-tag">PyCharm</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Colab Notebook</span>
-                        <span class="skill-tag">Docker (Learning)</span>
-                        <span class="skill-tag">Kubernetes (Learning)</span>
+                        <?php
+                        $skills = get_all_skills();
+                        while($skill = $skills->fetch_assoc()):
+                        ?>
+                            <span class="skill-tag"><?php echo htmlspecialchars($skill['name']); ?></span>
+                        <?php endwhile; ?>
                     </div>
                 </div>
             </div>
@@ -113,61 +101,22 @@
                 <p>My professional journey and key responsibilities</p>
             </div>
             <div class="timeline">
+                <?php
+                $experiences = get_all_experiences();
+                while($exp = $experiences->fetch_assoc()):
+                ?>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">October 2024 – Present</div>
-                        <h3 class="timeline-title">Python Backend Developer</h3>
-                        <h4 class="timeline-subtitle">Tata Consultancy Services (TCS)</h4>
+                        <div class="timeline-date"><?php echo htmlspecialchars($exp['date_range']); ?></div>
+                        <h3 class="timeline-title"><?php echo htmlspecialchars($exp['title']); ?></h3>
+                        <h4 class="timeline-subtitle"><?php echo htmlspecialchars($exp['company']); ?></h4>
                         <div class="timeline-description">
-                            <ul>
-                                <li>Developed and maintained scalable backend solutions using Flask, ensuring high performance, security, and maintainability.</li>
-                                <li>Developed packages to support backend solutions, ensuring service availability.</li>
-                                <li>Optimized backend systems with PostgreSQL, MySQL, improving query efficiency and data integrity.</li>
-                                <li>Designed and maintained secure RESTful APIs, implementing JWT authentication and RBAC.</li>
-                                <li>Currently learning Docker and Kubernetes to implement containerized deployments for enhanced scalability.</li>
-                                <li>Led and mentored junior developers, ensuring best coding practices and efficient team collaboration.</li>
-                            </ul>
+                            <?php echo $exp['description']; // Allow HTML ?>
                         </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">October 2022 – September 2024</div>
-                        <h3 class="timeline-title">Chief Technical Officer (CTO)</h3>
-                        <h4 class="timeline-subtitle">IEDC SNIT Kollam</h4>
-                        <div class="timeline-description">
-                            <ul>
-                                <li>Took a career break (2022–2024) to pursue MCA but remained actively involved in industry projects and technical leadership.</li>
-                                <li>Spearheaded technology initiatives as part of Kerala Startup Mission's (KSUM) IEDC program.</li>
-                                <li>Designed and developed scalable Django-based applications, increasing business efficiency by 30%.</li>
-                                <li>Led 2 full-stack projects, showcasing expertise in backend logic, API development, and system optimization.</li>
-                                <li>Established strategic partnerships with tech firms and research institutions to drive innovation.</li>
-                                <li>Won 2nd and 3rd place in IEDC hackathons and coding competitions.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">October 2020 – September 2022</div>
-                        <h3 class="timeline-title">System Administrator</h3>
-                        <h4 class="timeline-subtitle">Tata Consultancy Services (TCS)</h4>
-
-
-
-                <div class="timeline-description">
-                            <ul>
-                                <li>Managed client applications and cloud infrastructure using Microsoft Azure.</li>
-                                <li>Developed Python scripts to automate log analysis and system monitoring, reducing manual effort.</li>
-                                <li>Utilized Azure Virtual Machines, Azure SQL Database, and Azure Monitor to enhance system reliability.</li>
-                                <li>Coordinated incident management and automation using ServiceNow and Azure Portal.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <?php endwhile; ?>
             </div>
         </div>
     </section>
@@ -180,18 +129,17 @@
                 <p>My academic background and qualifications</p>
             </div>
             <div class="education-container">
+                <?php
+                $education = get_all_education();
+                while($edu = $education->fetch_assoc()):
+                ?>
                 <div class="education-item">
-                    <div class="education-date">September 2022 - September 2024</div>
-                    <h3 class="education-title">Master of Computer Applications (MCA)</h3>
-                    <h4 class="education-subtitle">University of Kerala, Kerala</h4>
-                    <div class="education-score">Score: 81%</div>
+                    <div class="education-date"><?php echo htmlspecialchars($edu['date_range']); ?></div>
+                    <h3 class="education-title"><?php echo htmlspecialchars($edu['degree']); ?></h3>
+                    <h4 class="education-subtitle"><?php echo htmlspecialchars($edu['school']); ?></h4>
+                    <div class="education-score"><?php echo htmlspecialchars($edu['score']); ?></div>
                 </div>
-                <div class="education-item">
-                    <div class="education-date">July 2017 - July 2020</div>
-                    <h3 class="education-title">Bachelor's Degree in Computer Science</h3>
-                    <h4 class="education-subtitle">University of Kerala, Kerala</h4>
-                    <div class="education-score">Score: 71%</div>
-                </div>
+                <?php endwhile; ?>
             </div>
         </div>
     </section>
@@ -204,22 +152,15 @@
                 <p>Recognitions and accomplishments throughout my career</p>
             </div>
             <div class="achievements-container">
+                <?php
+                $achievements = get_all_achievements();
+                while($ach = $achievements->fetch_assoc()):
+                ?>
                 <div class="achievement-card">
-                    <h3 class="achievement-title">Star of the Month at TCS</h3>
-                    <p class="achievement-description">Received the Star of the Month award at TCS for outstanding performance and contributions to team success.</p>
+                    <h3 class="achievement-title"><?php echo htmlspecialchars($ach['title']); ?></h3>
+                    <p class="achievement-description"><?php echo htmlspecialchars($ach['description']); ?></p>
                 </div>
-                <div class="achievement-card">
-                    <h3 class="achievement-title">On-the-Spot Awards (5x) at TCS</h3>
-                    <p class="achievement-description">Recognized five times with On-the-Spot Awards for exceptional problem-solving and technical contributions.</p>
-                </div>
-                <div class="achievement-card">
-                    <h3 class="achievement-title">National Chess Player</h3>
-                    <p class="achievement-description">Represented KV School as a National Chess Player, demonstrating strategic thinking and competitive excellence.</p>
-                </div>
-                <div class="achievement-card">
-                    <h3 class="achievement-title">IEDC Hackathon Recognition</h3>
-                    <p class="achievement-description">Won 2nd and 3rd place in IEDC hackathons and coding competitions during my time as CTO at IEDC SNIT Kollam.</p>
-                </div>
+                <?php endwhile; ?>
             </div>
         </div>
     </section>
@@ -232,12 +173,17 @@
                 <p>Professional certifications and continuous learning achievements</p>
             </div>
             <div class="certifications-container">
+                <?php
+                $certifications = get_all_certifications();
+                while($cert = $certifications->fetch_assoc()):
+                ?>
                 <div class="certification-card">
-                    <img src="/api/placeholder/80/80" alt="Microsoft" class="certification-logo">
-                    <h3 class="certification-title">Microsoft Azure AZ-900 Certified</h3>
-                    <p class="certification-issuer">Issuer: Microsoft</p>
-                    <p>Fundamental understanding of cloud concepts, Azure services, Azure workloads, security, privacy, pricing, and support.</p>
+                    <img src="<?php echo htmlspecialchars($cert['image_url']); ?>" alt="<?php echo htmlspecialchars($cert['title']); ?>" class="certification-logo">
+                    <h3 class="certification-title"><?php echo htmlspecialchars($cert['title']); ?></h3>
+                    <p class="certification-issuer"><?php echo htmlspecialchars($cert['issuer']); ?></p>
+                    <p><?php echo htmlspecialchars($cert['description']); ?></p>
                 </div>
+                <?php endwhile; ?>
             </div>
         </div>
     </section>
@@ -259,7 +205,7 @@
                         </div>
                         <div class="contact-text">
                             <h3>Phone</h3>
-                            <a href="tel:+917678659691">+91 7678-659-691</a>
+                            <a href="tel:<?php echo htmlspecialchars(get_setting('contact_phone')); ?>"><?php echo htmlspecialchars(get_setting('contact_phone')); ?></a>
                         </div>
                     </div>
 
@@ -272,7 +218,7 @@
                         </div>
                         <div class="contact-text">
                             <h3>Email</h3>
-                            <a href="mailto:haigokul5111999@gmail.com">haigokul5111999@gmail.com</a>
+                            <a href="mailto:<?php echo htmlspecialchars(get_setting('contact_email')); ?>"><?php echo htmlspecialchars(get_setting('contact_email')); ?></a>
                         </div>
                     </div>
 
@@ -284,7 +230,7 @@
                         </div>
                         <div class="contact-text">
                             <h3>WhatsApp</h3>
-                            <a href="https://wa.me/917678659691" target="_blank">+91 7678-659-691</a>
+                            <a href="<?php echo htmlspecialchars(get_setting('contact_whatsapp')); ?>" target="_blank"><?php echo htmlspecialchars(get_setting('contact_phone')); ?></a>
                         </div>
                     </div>
 
@@ -296,7 +242,7 @@
                         </div>
                         <div class="contact-text">
                             <h3>LinkedIn</h3>
-                            <a href="http://www.linkedin.com/in/gokul-jayakumar" target="_blank">linkedin.com/in/gokul-jayakumar</a>
+                            <a href="<?php echo htmlspecialchars(get_setting('contact_linkedin')); ?>" target="_blank">linkedin.com/in/gokul-jayakumar</a>
                         </div>
                     </div>
 
@@ -308,7 +254,7 @@
                         </div>
                         <div class="contact-text">
                             <h3>GitHub</h3>
-                            <a href="https://github.com/higokul99" target="_blank">github.com/higokul99</a>
+                            <a href="<?php echo htmlspecialchars(get_setting('contact_github')); ?>" target="_blank">github.com/higokul99</a>
                         </div>
                     </div>
                 </div>
@@ -321,11 +267,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Gokul Jayakumar</h3>
-                    <p>Python Backend Developer with expertise in Flask, Django, and database management. Passionate about designing scalable, secure, and high-performance backend solutions.</p>
+                    <h3><?php echo htmlspecialchars(get_setting('header_logo_part1')) . ' ' . htmlspecialchars(get_setting('header_logo_part2')); ?></h3>
+                    <p><?php echo htmlspecialchars(get_setting('footer_text')); ?></p>
                     <div class="social-links">
-                        <a href="http://www.linkedin.com/in/gokul-jayakumar" class="social-icon" target="_blank">in</a>
-                        <a href="https://github.com/" class="social-icon" target="_blank">GH</a>
+                        <a href="<?php echo htmlspecialchars(get_setting('contact_linkedin')); ?>" class="social-icon" target="_blank">in</a>
+                        <a href="<?php echo htmlspecialchars(get_setting('contact_github')); ?>" class="social-icon" target="_blank">GH</a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -343,16 +289,19 @@
                 <div class="footer-column">
                     <h3>Skills</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Python Development</a></li>
-                        <li><a href="#">Django & Flask</a></li>
-                        <li><a href="#">RESTful APIs</a></li>
-                        <li><a href="#">Database Management</a></li>
-                        <li><a href="#">Cloud Services (Azure)</a></li>
+                        <?php
+                        // Fetch first 5 skills for footer
+                        $sql = "SELECT * FROM skills ORDER BY order_index ASC LIMIT 5";
+                        $footer_skills = $conn->query($sql);
+                        while($f_skill = $footer_skills->fetch_assoc()):
+                        ?>
+                        <li><a href="#"><?php echo htmlspecialchars($f_skill['name']); ?></a></li>
+                        <?php endwhile; ?>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Gokul Jayakumar. All Rights Reserved.</p>
+                <p><?php echo htmlspecialchars(get_setting('footer_copyright')); ?></p>
             </div>
         </div>
     </footer>
@@ -413,28 +362,6 @@
                     behavior: 'smooth'
                 });
             });
-            
-            // Contact Form Submission
-            const contactForm = document.getElementById('contactForm');
-            
-            if(contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form values
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const subject = document.getElementById('subject').value;
-                    const message = document.getElementById('message').value;
-                    
-                    // Here you would typically send the form data to a server
-                    // For now, we'll just show an alert
-                    alert(`Thank you, ${name}! Your message has been received. I'll get back to you shortly.`);
-                    
-                    // Reset form
-                    contactForm.reset();
-                });
-            }
         });
     </script>
 </body>
