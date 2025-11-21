@@ -27,3 +27,16 @@ My personal portfolio website built using modern web technologies. Showcasing my
     -   **Default Credentials**:
         -   Username: `admin`
         -   Password: `admin123`
+
+### Security
+
+#### Change Password
+1.  Log in to the Admin Panel.
+2.  Click "Change Password" in the header.
+3.  Enter your current password and the new password.
+
+#### Reset Password (Emergency)
+If you forget your password:
+1.  Navigate to `http://localhost/reset_password.php` (or run `php reset_password.php` in terminal).
+2.  This will reset the `admin` password to `admin123`.
+3.  **Important**: Delete `reset_password.php` immediately after use to prevent unauthorized access.

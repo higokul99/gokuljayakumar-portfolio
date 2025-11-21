@@ -16,6 +16,7 @@ check_login();
             <h1>Dashboard</h1>
             <div class="user-info">
                 Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> |
+                <a href="change_password.php">Change Password</a> |
                 <a href="logout.php">Logout</a>
             </div>
         </header>
