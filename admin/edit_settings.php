@@ -15,7 +15,7 @@ $settings_keys = [
     'site_title', 'header_logo_part1', 'header_logo_part2',
     'hero_title_prefix', 'hero_title_name', 'hero_description',
     'about_title', 'about_subtitle', 'about_detailed_title', 'about_detailed_text',
-    'contact_email', 'contact_phone', 'contact_linkedin', 'contact_github', 'contact_whatsapp',
+    'contact_email', 'contact_phone', 'contact_linkedin', 'contact_github', 'contact_whatsapp', 'resume_link',
     'footer_text', 'footer_copyright'
 ];
 
@@ -110,6 +110,10 @@ foreach ($settings_keys as $key) {
             <div class="form-group">
                 <label>WhatsApp URL</label>
                 <input type="text" name="contact_whatsapp" value="<?php echo htmlspecialchars($current_settings['contact_whatsapp']); ?>">
+            </div>
+            <div class="form-group">
+                <label>Resume Link (Google Drive URL)</label>
+                <input type="text" name="resume_link" value="<?php echo htmlspecialchars($current_settings['resume_link']); ?>">
             </div>
 
             <h2>Footer</h2>

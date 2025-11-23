@@ -39,7 +39,7 @@ require_once 'functions.php';
                 <p><?php echo htmlspecialchars(get_setting('hero_description')); ?></p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Contact Me</a>
-                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                    <a href="<?php echo htmlspecialchars(get_setting('resume_link')); ?>" class="btn btn-secondary" target="_blank">My Resume</a>
                 </div>
             </div>
             <div class="hero-image">
